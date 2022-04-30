@@ -52,7 +52,7 @@ AUDIENCE: .....
 SOCRATIC SOURCE OF REQUIREMENTS:
 
 ```
-As the  duck-counting service
+As the  thing-counting service
 
 given   you start with three things
 and     I give you two additional things
