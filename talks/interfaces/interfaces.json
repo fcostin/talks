@@ -1,0 +1,709 @@
+{
+  "text": "",
+  "children": [
+    {
+      "text": "\"interfaces\"",
+      "children": [
+        {
+          "text": "what do we mean by \"interface\"?",
+          "collapsed": true,
+          "children": [
+            {
+              "text": "some boundary between components",
+              "collapsed": true
+            },
+            {
+              "text": "examples",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "exported public interface of commmon library",
+                  "collapsed": true
+                },
+                {
+                  "text": "interface between internal components of application"
+                },
+                {
+                  "text": "exported service interface of component in distributed system"
+                },
+                {
+                  "text": "interface of service provided by team to other teams"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "why care?",
+          "collapsed": true,
+          "children": [
+            {
+              "text": "why do we want \"well designed\" interfaces?",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "tools and services with well designed interfaces are simpler to use, and can be used in a wider range of situations. users are more likely to onboard and obtain value from the tool or service"
+                },
+                {
+                  "text": "complicated problems become simpler to think about. previously intractably complicated problems may become tractable to think about"
+                },
+                {
+                  "text": "teams working on components separated by well designed interfaces become more autonomous and more productive without the overhead of frequent and costly communicating"
+                },
+                {
+                  "text": "cost of future change in large systems is reduced"
+                }
+              ]
+            },
+            {
+              "text": "some technologies can adeptly express interfaces, other technologies cannot",
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "text": "famous historical examples of interfaces",
+          "children": [
+            {
+              "text": "numbers",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "integers, fractions aka rational numbers & \"real numbers\"",
+                  "collapsed": true
+                },
+                {
+                  "text": "operations:",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "add, subtract, multiply, divide"
+                    }
+                  ]
+                },
+                {
+                  "text": "almost entirely free of error scenarios. nearly all operations are guaranteed to succeed"
+                },
+                {
+                  "text": "originally designed for use by humans, also used effectively by machines"
+                },
+                {
+                  "text": "history of succesful major revisions involving many contributors",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "fractions ~ 1000 BC (egypt)"
+                    },
+                    {
+                      "text": "irrational numbers ~ 750 BC (Manava, india)"
+                    },
+                    {
+                      "text": "rational numbers ~ 300 BC (Euclid, greece)"
+                    },
+                    {
+                      "text": "real numbers ~ Descartes, Legendre, Galois, Hermite, Cantor (16xx--18xx)"
+                    }
+                  ]
+                },
+                {
+                  "text": "\"horizontal\" technology, can be applied across many domains, even retail banking",
+                  "collapsed": true
+                },
+                {
+                  "text": "hides irrelevant details - users can reason with numbers at high abstraction level to get useful work done in real world",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "e.g. practical primary school arithmetic when buying groceries, budgeting, estimating software project delivery schedules"
+                    },
+                    {
+                      "text": "helps users avoid focusing on irrelevant details -- e.g. can count ducks without knowing name of each duck"
+                    },
+                    {
+                      "text": "users able to get stuff done in ignorance of internal details of how numbers are internally constructed, without needing 13 years of formal training"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "text": "classic computer science data structures e.g. \"mutable set\"",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "operations:",
+                  "children": [
+                    {
+                      "text": "add element, pop, contains element, union, intersection"
+                    }
+                  ]
+                },
+                {
+                  "text": "almost entirely free of error scenarios. operations usually succeed"
+                },
+                {
+                  "text": "popular implementations in many but not all languages:",
+                  "children": [
+                    {
+                      "text": "java, c++, python, (not Go!)"
+                    }
+                  ]
+                },
+                {
+                  "text": "horizontal technology. widely applicable to many domains",
+                  "collapsed": true
+                }
+              ]
+            },
+            {
+              "text": "CRUD APIs in arbitrary business web services",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "interface designed for used by machines"
+                },
+                {
+                  "text": "operations:",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "create read update delete of some business resource"
+                    }
+                  ]
+                },
+                {
+                  "text": "hides details of internal data store implementation, prevents uncontrolled modification to data or uncontrolled queries"
+                }
+              ]
+            },
+            {
+              "text": "AWS EC2 API",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "interface for use by machines, understandable by humans"
+                },
+                {
+                  "text": "hides most irrelevant details",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "e.g. users can be blissfully ignorant of details of how to design, build and operate a data centre"
+                    }
+                  ]
+                },
+                {
+                  "text": "one of the foundations that enables the AWS \"platform\" to support a rich ecosystem of third party services"
+                },
+                {
+                  "text": "hugely commercially successful"
+                }
+              ]
+            },
+            {
+              "text": "win32 APIs",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "for use by machines, understandable by programmers"
+                },
+                {
+                  "text": "consists of many interfaces: https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list"
+                },
+                {
+                  "text": "enables the windows operating system platform to support a rich ecosystem of third party software"
+                },
+                {
+                  "text": "famously backward compatible for a long a time, supporting and protecting investments made by those who build applications atop it"
+                },
+                {
+                  "text": "hugely commercially successful"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "what makes for a great interface?",
+          "collapsed": true,
+          "children": [
+            {
+              "text": "simple enough to do the job but no simpler"
+            },
+            {
+              "text": "\"simple\" in the Rich Hickey sense of being uncomplicated -- it avoids tangling together unrelated concerns"
+            },
+            {
+              "text": "enables thought to happen at a higher level of abstraction, ignoring irrelevant details. makes thinking easier."
+            },
+            {
+              "text": "formally specified, enabling machine tool assistance",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "specs enable machine tools to increase productivity (code generators), improve quality (automated testing, type checking, model checking), reduce risk (generated boilerplate code has lower error rate than hand written boilerplate code and is more likely to integrate)"
+                }
+              ]
+            },
+            {
+              "text": "it is pragmatic and covers edge cases",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "if the problem requires both parties to grapple with some gnarly details of the problem, the interface needs to accomodate that and clearly define who is responsible for what"
+                },
+                {
+                  "text": "e.g. errors, failures, explicit modelling of side effects that the client needs to know about"
+                }
+              ]
+            },
+            {
+              "text": "it is likely to remain useful in future, as the world changes",
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "text": "tips for designing an interface",
+          "collapsed": true,
+          "children": [
+            {
+              "text": "great abstractions are unlikely to be discovered by a committee"
+            },
+            {
+              "text": "think hard about it, then try something. rapidly iterate with feedback"
+            },
+            {
+              "text": "TDD: pretend to use the interface in various test scenarios before implementing it. critique it. it it clear and concise? is there avoidable boilerplate?"
+            },
+            {
+              "text": "designing a great interface can be like inventing mathematical abstractions",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "operations are more useful if they can be composed"
+                },
+                {
+                  "text": "prefer space of states \"closed\" under operations. avoid designs where some sequence of operations can leave interface in broken or undefined state"
+                },
+                {
+                  "text": "is there structure that must be preserved by operations?"
+                },
+                {
+                  "text": "should operations satisfy identities? e.g. delete inverse of create"
+                },
+                {
+                  "text": "is the abstraction well-defined? results of operations should be independent of irrelevant details (e.g. counting ducks shouldn't depend on duck colour)"
+                }
+              ]
+            },
+            {
+              "text": "responsibilities and non-responsibilities",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "which concerns is the client responsible for?"
+                },
+                {
+                  "text": "which concerns is the service provider responsible for?"
+                },
+                {
+                  "text": "which concerns are shared?"
+                }
+              ]
+            },
+            {
+              "text": "distributed systems: make all mutating operations idempotent to allow client to compensate for dropped messages by retrying the operation"
+            }
+          ]
+        },
+        {
+          "text": "key idea: Parnas' decomposition technique to identify where to draw interfaces",
+          "collapsed": true,
+          "children": [
+            {
+              "text": "Parnas (1970s): decompose the system into components so each component isolates a source of uncertainty (e.g. potential future change) and shields the rest of the system from the impact of that change"
+            }
+          ]
+        },
+        {
+          "text": "key idea: abstraction for simplicity",
+          "collapsed": true,
+          "children": [
+            {
+              "text": "simple abstractions reduce cognitive load and make it easier for humans to comprehend systems and focus on the right details"
+            },
+            {
+              "text": "Rich Hickey - \"I don't know and I don't want to know\"",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "Rich Hickey, 49:00 re: \"how to build simple systems\""
+                },
+                {
+                  "text": "https://www.infoq.com/presentations/Simple-Made-Easy/"
+                },
+                {
+                  "text": "system diagram where every line is annotated with \"i dont know and i dont wanna know\""
+                }
+              ]
+            },
+            {
+              "text": "information hiding -- segregation of design decisions that are most likely to change",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "supported at application/library level by programming languages",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "interfaces (Java, Go) or pure virtual abstract base classes (C++)"
+                    },
+                    {
+                      "text": "exported & internal symbol visibility (Java, Go)"
+                    }
+                  ]
+                },
+                {
+                  "text": "information hiding enables flexibility to accomodate future change by reducing tight coupling of information details"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "key idea: well designed interfaces enable decentralised collaboration without expensive communication",
+          "collapsed": true,
+          "children": [
+            {
+              "text": "e.g. during software system delivery project, teams agree on interface -- then, teams can each build their side of system. \"build to spec\"",
+              "collapsed": true
+            },
+            {
+              "text": "examples of high quality \"horizontal\" APIs one can onboard to and start using without talking to anyone",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "python list data structure",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "read the tutorial and reference docs!",
+                      "collapsed": true
+                    },
+                    {
+                      "text": "no need to schedule a session with Guido"
+                    }
+                  ]
+                },
+                {
+                  "text": "AWS EC2 API",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "read the tutorial and reference docs!"
+                    },
+                    {
+                      "text": "enter a valid credit card"
+                    },
+                    {
+                      "text": "no need to schedule a session with a product manager or customer success consultant"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "text": "documentation isn't everything",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "docs are important to make adoption easier and less effort, but first you need to design and offer an interface that doesn't suck!"
+                },
+                {
+                  "text": "if your documentation sounds ridiculous or confusing when writing or reading it, is it because your interface design or onboarding process for new users isn't simple enough yet?"
+                },
+                {
+                  "text": "Is your service handling enough responsibilities internally behind the abstraction of the interface? or is the service forcing the user to care about too many irrelevant things?",
+                  "collapsed": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "punchline #1 -- decomposition, interfaces, systems, teams, cost of change, coupling",
+          "collapsed": true,
+          "children": [
+            {
+              "text": "interfaces between decomposed components enable looser coupling between components, which makes internal changes inside each component cheaper and faster"
+            },
+            {
+              "text": "sometimes tight-coupling is unavoidable, e.g. some business problems might need 50,000 lines of code to model and express complex logic and rules",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "Where possible, decompose the system so this tight coupling is internal to a single cohesive component, owned by a single team (to reduce human communication overhead)"
+                },
+                {
+                  "text": "Shield the other components and other teams from having to care about as much of the unnecessary detail using interfaces around the component"
+                }
+              ]
+            },
+            {
+              "text": "interfaces and decomposition based on historical assumptions may stop making sense",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "when circumstances change, a decomposition that was effective yesterday may no longer be effective today"
+                },
+                {
+                  "text": "Consider the costs & benefit of",
+                  "children": [
+                    {
+                      "text": "eliminating poorly fitted abstractions & structures"
+                    },
+                    {
+                      "text": "continuing to suffer due to poorly fitted abstractions"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "punchline #2 -- some technologies are adept at implementing interfaces (OpenAPI, gRPC, \"interface\" construct in Java & Go), others are semi workable (HTML forms! PostgreSQL!) while other technologies are not (Adobe flash, PDF documents, Spanner databases)",
+          "collapsed": true,
+          "children": [
+            {
+              "text": "implementation technologies that are adept at expressing interfaces",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "the \"interface\" construct in programming languages (Java, Go), pure abstract classes in C++"
+                },
+                {
+                  "text": "type-hierarchy-free schemas for data e.g. JSON Schema"
+                },
+                {
+                  "text": "value- or data- oriented programming language type systems",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "value can be serialised, send as a message, deserialised into equivalent value"
+                    },
+                    {
+                      "text": "not OO (data is mixed up with mutability, operations, code, memory layout, type hierarchies -- we just want the data, none of the other nonsense)"
+                    },
+                    {
+                      "text": "not memory-oriented (C pointers)"
+                    }
+                  ]
+                },
+                {
+                  "text": "interface definition languages for distributed systems",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "OpenAPI",
+                      "children": [
+                        {
+                          "text": "upside: popular and boring, encourages loose coupling by supporting data schemas without type systems, can exploit HTTP ecosystem, can integrate with clients that only understand HTTP but not OpenAPI"
+                        },
+                        {
+                          "text": "downside: overly flexible, arguments about RESTfulness, mixes application level and HTTP protocol concerns"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "protocol buffers",
+                      "children": [
+                        {
+                          "text": "upside: more efficient use of bandwidth, can be used to trasmit data & expose operations with close match to programming language type system & operations"
+                        },
+                        {
+                          "text": "downside: less popular & smaller ecosystem, requires clients to be able to use protobuf compiler tooling or accept code generated client libraries, potentially makes systems more rigid to change through type system"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "GraphQL",
+                      "children": [
+                        {
+                          "text": "upside: similar to OpenAPI but with more support for flexible query operations by client, similar to flexibility SQL gives human analyst",
+                          "children": [
+                            {
+                              "text": "request connected objects"
+                            },
+                            {
+                              "text": "request only fields you want, not everything"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "downside: less popular & smaller ecosystem"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "SOAP & WSDL",
+                      "children": [
+                        {
+                          "text": "upside: similar to OpenAPI but no longer popular"
+                        },
+                        {
+                          "text": "downside:",
+                          "children": [
+                            {
+                              "text": "general complexity of XML ecosystem",
+                              "children": [
+                                {
+                                  "text": "\"XML is like violence: if it doesn’t solve your problem, you aren’t using enough of it\" - Heard from someone working at Microsoft"
+                                },
+                                {
+                                  "text": "XSLT is turing complete"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "text": "implementation technologies that are not adept at expressing interfaces, but might be somewhat workable",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "classic boring SQL DBs, e.g. PostgreSQL",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "has support for \"information hiding\" part of abstractions",
+                      "children": [
+                        {
+                          "text": "can use SQL privileges, RBAC to restrict which role can perform which actions on tables & rows."
+                        }
+                      ]
+                    },
+                    {
+                      "text": "has partial support for offering pre-defined operations... but cannot restrict complexity of operations (SQL expressions)",
+                      "children": [
+                        {
+                          "text": "can use views to express pre-defined queries for read-only operations that a particular role is able to perform"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "text": "HTML Forms!",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "has very limited support for schemas (e.g. text field, numeric fied)"
+                    },
+                    {
+                      "text": "supports expressing operations (required parameters for form)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "text": "implementation technologies that don't seem appropriate for expressing service interfaces",
+              "collapsed": true,
+              "children": [
+                {
+                  "text": "OO language \"inheritance\" constructs in C++, Java, Python",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "unfortunately, \"inheritance\" often mixes together desirable properties of interface with unrelated concerns such as code reuse, memory layout of data, type system hierarchies"
+                    }
+                  ]
+                },
+                {
+                  "text": "anything where you'd need to use some kind of UI testing tool to access as a client",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "PDF files"
+                    },
+                    {
+                      "text": "Adobe Flash"
+                    },
+                    {
+                      "text": "javascript rich single page web applications"
+                    },
+                    {
+                      "text": "UI driven windows desktop applications"
+                    }
+                  ]
+                },
+                {
+                  "text": "TCP/IP, UDP",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "these are very useful low level transport primitives"
+                    },
+                    {
+                      "text": "no way to express schema or operations at the abstraction level"
+                    }
+                  ]
+                },
+                {
+                  "text": "raw filesystem or object storage such as AWS S3 & google cloud storage",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "these are very useful low level storage primitives"
+                    },
+                    {
+                      "text": "awkward or impossible to express schema or operations, apart from read-only operations",
+                      "children": [
+                        {
+                          "text": "notable exception: linux interfaces to kernel subsystems such as \"/proc\" filesystem!"
+                        },
+                        {
+                          "text": "amusing example: dropping files in buckets to trigger cloud functions"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "text": "Spanner & Spanner's SQL dialect",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "Spanner's SQL dialect offers no way to implement \"information hiding\" aspect of interface design, to say a client can only perform certain query operations or restrict queries to a subset of tables"
+                    },
+                    {
+                      "text": "integration with GCP IAM is very nice but too coarse grained to express interface"
+                    }
+                  ]
+                },
+                {
+                  "text": "bigtable",
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "text": "bigtable doesn't even support schemas for data, let alone offer an IDL or a way to do information hiding",
+                      "collapsed": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
